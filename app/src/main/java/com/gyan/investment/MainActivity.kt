@@ -61,7 +61,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         tvPpf = findViewById(R.id.tv_ppf)
         tvRd = findViewById(R.id.tv_rd)
         tvSip = findViewById(R.id.tv_sip)
-        tvepf
 
         tvEpf.setOnClickListener(this)
         tvFd.setOnClickListener(this)
