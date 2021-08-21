@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+                .setAction("Action", null).show()
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -58,10 +58,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         tvFd = findViewById(R.id.tv_fd)
         tvLoan = findViewById(R.id.tv_loan)
         tvNsc = findViewById(R.id.tv_nsc)
-        tvPpf=findViewById(R.id.tv_ppf)
-        tvRd=findViewById(R.id.tv_rd)
-        tvSip=findViewById(R.id.tv_sip)
-
+        tvPpf = findViewById(R.id.tv_ppf)
+        tvRd = findViewById(R.id.tv_rd)
+        tvSip = findViewById(R.id.tv_sip)
+        tvepf
 
         tvEpf.setOnClickListener(this)
         tvFd.setOnClickListener(this)
@@ -82,8 +82,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow), drawerLayout)
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+            ), drawerLayout
+        )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
@@ -107,9 +110,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val time: Double = etTime.text.toString().toDouble()
                 val roi: Double = etRoi.text.toString().toDouble()
 
-                val amountWitInterest: Double = amount * (Math.pow(((1 + (roi / (100 * 4)))).toDouble(), (4 * time).toDouble()))
+                val amountWitInterest: Double =
+                    amount * (Math.pow(((1 + (roi / (100 * 4)))).toDouble(), (4 * time).toDouble()))
 
-                Log.e("FD Amount", amountWitInterest.toString() + amount.toString() + time.toString() + roi.toString())
+                Log.e(
+                    "FD Amount",
+                    amountWitInterest.toString() + amount.toString() + time.toString() + roi.toString()
+                )
 //                tvResult.setText(amountWitInterest.toString())
 
             }
