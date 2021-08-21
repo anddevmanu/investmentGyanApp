@@ -18,6 +18,9 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import com.gyan.investment.ui.fragment.FDCalculatorFragment
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -28,7 +31,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var etRoi: EditText
     private lateinit var etTime: EditText
     private lateinit var btnSubmit: Button
-    private lateinit var tvResult: TextView
+    private lateinit var tvPpf: TextView
+    private lateinit var tvEpf: TextView
+    private lateinit var tvNsc: TextView
+    private lateinit var tvFd: TextView
+    private lateinit var tvRd: TextView
+    private lateinit var tvSip: TextView
+    private lateinit var tvLoan: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,12 +53,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
-        etAmount = findViewById(R.id.et_amount)
-        etRoi = findViewById(R.id.et_roi)
-        etTime = findViewById(R.id.et_time)
-        btnSubmit = findViewById(R.id.btn_submit)
-        tvResult=findViewById(R.id.tv_result)
-        btnSubmit.setOnClickListener(this)
+
+        tvEpf = findViewById(R.id.tv_epf)
+        tvFd = findViewById(R.id.tv_fd)
+        tvLoan = findViewById(R.id.tv_loan)
+        tvNsc = findViewById(R.id.tv_nsc)
+        tvPpf=findViewById(R.id.tv_ppf)
+        tvRd=findViewById(R.id.tv_rd)
+        tvSip=findViewById(R.id.tv_sip)
+
+
+        tvEpf.setOnClickListener(this)
+        tvFd.setOnClickListener(this)
+        tvLoan.setOnClickListener(this)
+        tvNsc.setOnClickListener(this)
+        tvPpf.setOnClickListener(this)
+        tvRd.setOnClickListener(this)
+        tvSip.setOnClickListener(this)
 
 //        1st tab.   FD Calculator
 //                2nd tab  RD Calculator
@@ -60,7 +80,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 //                7th tab. Nsc Calculator with detail
 
 
-                // Passing each menu ID as a set of Ids because each
+        // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(setOf(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow), drawerLayout)
@@ -83,14 +103,47 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         when (view?.id) {
             R.id.btn_submit -> {
                 // do some work here
-                val amount:Double=etAmount.text.toString().toDouble()
-                val time:Double=etTime.text.toString().toDouble()
-                val roi:Double=etRoi.text.toString().toDouble()
+                val amount: Double = etAmount.text.toString().toDouble()
+                val time: Double = etTime.text.toString().toDouble()
+                val roi: Double = etRoi.text.toString().toDouble()
 
-               val amountWitInterest: Double = amount*(Math.pow(((1+(roi/(100*4)))).toDouble(),(4*time).toDouble()))
+                val amountWitInterest: Double = amount * (Math.pow(((1 + (roi / (100 * 4)))).toDouble(), (4 * time).toDouble()))
 
-                Log.e("FD Amount",amountWitInterest.toString() +amount.toString()+time.toString()+roi.toString())
-                tvResult.setText(amountWitInterest.toString())
+                Log.e("FD Amount", amountWitInterest.toString() + amount.toString() + time.toString() + roi.toString())
+//                tvResult.setText(amountWitInterest.toString())
+
+            }
+            R.id.tv_fd -> {
+                // do some work here
+
+                val fragmentManager: FragmentManager = supportFragmentManager
+                val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+                val myFragment = FDCalculatorFragment()
+
+//                val bundle = Bundle()
+//                bundle.putString("message", editText.text.toString())
+//                myFragment.arguments = bundle
+                fragmentTransaction.add(R.id.fragment_container, myFragment).commit()
+
+            }
+            R.id.tv_rd -> {
+                // do some work here
+
+            }
+            R.id.tv_ppf -> {
+                // do some work here
+
+            }
+            R.id.tv_epf -> {
+                // do some work here
+
+            }
+            R.id.tv_loan -> {
+                // do some work here
+
+            }
+            R.id.tv_sip -> {
+                // do some work here
 
             }
         }

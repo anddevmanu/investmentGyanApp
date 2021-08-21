@@ -28,8 +28,8 @@ class FDCalculatorFragment:Fragment() , View.OnClickListener {
 
 //        galleryViewModel =
 //                ViewModelProvider(this).get(GalleryViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_gallery, container, false)
-        val textView: TextView = root.findViewById(R.id.text_gallery)
+        val root = inflater.inflate(R.layout.fragment_fd_calculator, container, false)
+//        val textView: TextView = root.findViewById(R.id.text_gallery)
 
         etAmount = root.findViewById(R.id.et_amount)
         etRoi = root.findViewById(R.id.et_roi)

@@ -26,7 +26,7 @@ class EpfCalculatorFragment :Fragment() , View.OnClickListener {
 
 //        galleryViewModel =
 //                ViewModelProvider(this).get(GalleryViewModel::class.java)
-        val root = inflater.inflate(R.layout.detailed_epf_calculator, container, false)
+        val root = inflater.inflate(R.layout.fragment_detailed_epf_calculator, container, false)
 
         etAmount = root.findViewById(R.id.et_amount)
         etRoi = root.findViewById(R.id.et_roi)
